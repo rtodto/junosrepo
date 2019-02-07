@@ -7,5 +7,5 @@
 - junos-cmd.py @http://rtodto.net/running-batch-commands-on-remote-junos-devices/
   it can upgrade multiple of junos devices
 
-- srx_migrate_zone2global.py <AddressBookFileInZoneBaseFormat>
+- srx_migrate_zone2global.py AddressBookFileInZoneBaseFormat
   !!No support for wild card and range address conversions!!
