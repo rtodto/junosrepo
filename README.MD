@@ -8,3 +8,4 @@
   it can upgrade multiple of junos devices
 
 - srx_migrate_zone2global.py <AddressBookFileInZoneBaseFormat>
+  !!No support for wild card and range address conversions!!
