@@ -13,7 +13,7 @@
 #Address set: set security zones security-zone <zonename> address-book address-set <address-set-name> address-set <address-set-name>
 
 import sys
-
+import shlex
 
 arg_len = len(sys.argv)
 if arg_len < 2:
@@ -31,15 +31,16 @@ zone_names = []
 with open(addressbook_file,'r') as address_f:
   for addr_object in address_f:
     if addr_object.startswith('set'):
-      addr_object_sep = addr_object.split()     
+      addr_object_sep = shlex.split(addr_object)     
     else:
       continue
     #Collect address objects
     if addr_object_sep[6] == 'address':
 
       if addr_object_sep[8] == 'description':
-        print('set security address-book global address {} description {}'.format(addr_object_sep[7],addr_object_sep[9]))          
-     
+        #convert spaces to underscore if there is any 
+        description = addr_object_sep[9].replace(" ","_")
+        print('set security address-book global address {} description {}'.format(addr_object_sep[7],description))          
       elif addr_object_sep[8] == 'dns-name':
         print('set security address-book global address {} dns-name {}'.format(addr_object_sep[7],addr_object_sep[9])) 
 
