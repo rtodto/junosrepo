@@ -10,6 +10,7 @@
 #                set security zones security-zone <zonename> address-book address dns-name <FQDN>
 #                set security zones security-zone <zonename> address-book address description <description>
 #Address set: set security zones security-zone <zonename> address-book address-set <address-set-name> address <address-object-name>
+#Address set: set security zones security-zone <zonename> address-book address-set <address-set-name> address-set <address-set-name>
 
 import sys
 
@@ -56,7 +57,10 @@ with open(addressbook_file,'r') as address_f:
 
     #Collect address sets
     if addr_object_sep[6] == 'address-set':
-      print('set security address-book global address-set {} address {}'.format(addr_object_sep[7],addr_object_sep[9])) 
+      if addr_object_sep[8] == 'address':
+        print('set security address-book global address-set {} address {}'.format(addr_object_sep[7],addr_object_sep[9])) 
+      elif addr_object_sep[8] == 'address-set': #There can be address-set within address-set
+        print('set security address-book global address-set {} address-set {}'.format(addr_object_sep[7],addr_object_sep[9]))
 
 for zone in set(zone_names):
   print('del security zones security-zone {} address-book'.format(zone))
