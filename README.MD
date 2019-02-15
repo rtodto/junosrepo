@@ -8,6 +8,3 @@
   it can upgrade multiple of junos devices
 
 - srx_migrate_zone2global.py @http://rtodto.net/migrating-zone-based-address-book-to-global-in-juniper-srx/
-```
-  !!No support for wild card and range address conversions!!
-```

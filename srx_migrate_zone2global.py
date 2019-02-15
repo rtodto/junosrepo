@@ -45,6 +45,9 @@ with open(addressbook_file,'r') as address_f:
         range_address = ' '.join(addr_object_sep[9:])
         print('set security address-book global address {} range-address {}'.format(addr_object_sep[7],range_address))
 
+      elif addr_object_sep[8] == 'wildcard-address':
+         print('set security address-book global address {} wildcard-address {}'.format(addr_object_sep[7],addr_object_sep[9]))
+
       elif addr_object_sep[8] == 'dns-name':
         print('set security address-book global address {} dns-name {}'.format(addr_object_sep[7],addr_object_sep[9])) 
 
