@@ -41,6 +41,10 @@ with open(addressbook_file,'r') as address_f:
         #convert spaces to underscore if there is any 
         description = addr_object_sep[9].replace(" ","_")
         print('set security address-book global address {} description {}'.format(addr_object_sep[7],description))          
+      elif addr_object_sep[8] == 'range-address':
+        range_address = ' '.join(addr_object_sep[9:])
+        print('set security address-book global address {} range-address {}'.format(addr_object_sep[7],range_address))
+
       elif addr_object_sep[8] == 'dns-name':
         print('set security address-book global address {} dns-name {}'.format(addr_object_sep[7],addr_object_sep[9])) 
 
